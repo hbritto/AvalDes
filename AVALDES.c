@@ -20,8 +20,8 @@ int main() {
 	float Te = 1;
 	request_t client[100];
 	int event, next_client = 1, aleatorio;
-	int disk_service_time = {10, 50};
-	int CPU_service_time = {1, 5};
+	int disk_service_time[] = {10, 50};
+	int CPU_service_time[] = {1, 5};
 	float Ta0 = 10, Ts0 = 10, Ts1 = 10, Ts2 = 10, Ts3 = 10, Ts4 = 10, Ts5 = 10, Ts6 = 10, Ts7 = 10, Ts8 = 10;
 	int i = 0;
 	request_t *c;
