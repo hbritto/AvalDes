@@ -1,0 +1,15 @@
+./avaldes 1
+./avaldes 2
+./avaldes 3
+./avaldes 4
+./avaldes 5
+./avaldes 6
+./avaldes 7
+./avaldes 8
+./avaldes 9
+./avaldes 10
+./avaldes 11
+./avaldes 12
+./avaldes 13
+./avaldes 14
+./avaldes 15

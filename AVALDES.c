@@ -23,19 +23,13 @@ typedef struct request_t {
 
 int main(int argc, char *argv[]) {
 	/* definicoes */
-	float Te = 1;
 	unsigned int curr_clients = 0, max_clients = 100;
-	request_t client[max_clients];
 	int event, next_client = 1, aleatorio;
-	double arrival_time = expntl(10);
-	double disk_service_time[] = {expntl(10), expntl(15)};
-	double CPU_service_time[] = {expntl(20), expntl(30)};
-	// float Ta0 = 10, Ts0 = 10, Ts1 = 10, Ts2 = 10, Ts3 = 10, Ts4 = 10, Ts5 = 10, Ts6 = 10, Ts7 = 10, Ts8 = 10;
-	int i = 0;
-	request_t *c;
+	double arrival_time = 10;
+	double disk_service_time[] = {20, 30};
+	double CPU_service_time[] = {10, 15};
 
-	// int bugfix = 100;
-	// request_t *client = (request_t *) malloc(sizeof(request_t) * max_clients);
+	request_t *client = (request_t *) malloc(sizeof(request_t) * max_clients);
 
 	/* escalona a chegada do primeiro cliente */
 	int seed = atoi(argv[1]);
@@ -63,28 +57,29 @@ int main(int argc, char *argv[]) {
 	facility("CPU4", 1);
 	facility("Disk4", 1);
 
-	schedule(1, 0.0, 0);
+	int i = 0;
+	schedule(1, 0.0, i);
 	while (curr_clients < max_clients) {
 		cause(&event, &i);
-		c = &client[i];
-
-		aleatorio = randompar(1,10000);
-		if(aleatorio <= 8000)
-			c->type = STATIC;
-		else
-			c->type = DYNAMIC;
 
 		switch (event) {
 		case 1:
+			aleatorio = randompar(1,10000);
+			if(aleatorio <= 8000)
+				client[i].type = STATIC;
+			else
+				client[i].type = DYNAMIC;
+
 			schedule(2, 0.0, i);
 
-			schedule(1, arrival_time, next_client++);
+			if(next_client < max_clients)
+				schedule(1, expntl(arrival_time), next_client++);
 			break;
 
 		/*  centro de serviço = Front */
 		case 2:
 			if (request("Front", event, i, 0) == 0)
-				schedule(3, 0.0, i);
+				schedule(3, 0.0, i); // Trocar aqui para considerar tempo de serviço do front
 			break;
 		case 3:
 			release("Front", i);
@@ -97,13 +92,13 @@ int main(int argc, char *argv[]) {
 				schedule(12, 0.0, i);
 			if ((7501 <= aleatorio) && (aleatorio <= 10000))
 				schedule(16, 0.0, i);
-			c->ts_end = time();
+			client[i].ts_end = time();
 			break;
 
 		/*  centro de serviço = CPU1 */
 		case 4:
 			if (request("CPU1", event, i, 0) == 0)
-				schedule(5, CPU_service_time[c->type], i);
+				schedule(5, expntl(CPU_service_time[client[i].type]), i);
 			break;
 		case 5:
 			release("CPU1", i);
@@ -112,13 +107,13 @@ int main(int argc, char *argv[]) {
 				schedule(6, 0.0, i);
 			if ((8001 <= aleatorio) && (aleatorio <= 10000))
 				curr_clients++;
-			c->server = 0;
+			client[i].server = 0;
 			break;
 
 		/*  centro de serviço = CPU2 */
 		case 8:
 			if (request("CPU2", event, i, 0) == 0)
-				schedule(9, CPU_service_time[c->type], i);
+				schedule(9, expntl(CPU_service_time[client[i].type]), i);
 			break;
 		case 9:
 			release("CPU2", i);
@@ -127,13 +122,13 @@ int main(int argc, char *argv[]) {
 				schedule(10, 0.0, i);
 			if ((8001 <= aleatorio) && (aleatorio <= 10000))
 				curr_clients++;
-			c->server = 1;
+			client[i].server = 1;
 			break;
 
 		/*  centro de serviço = CPU3 */
 		case 12:
 			if (request("CPU3", event, i, 0) == 0)
-				schedule(13, CPU_service_time[c->type], i);
+				schedule(13, expntl(CPU_service_time[client[i].type]), i);
 			break;
 		case 13:
 			release("CPU3", i);
@@ -142,13 +137,13 @@ int main(int argc, char *argv[]) {
 				schedule(14, 0.0, i);
 			if ((8001 <= aleatorio) && (aleatorio <= 10000))
 				curr_clients++;
-			c->server = 2;
+			client[i].server = 2;
 			break;
 
 		/*  centro de serviço = CPU4 */
 		case 16:
 			if (request("CPU4", event, i, 0) == 0)
-				schedule(17, CPU_service_time[c->type], i);
+				schedule(17, expntl(CPU_service_time[client[i].type]), i);
 			break;
 		case 17:
 			release("CPU4", i);
@@ -157,13 +152,13 @@ int main(int argc, char *argv[]) {
 				schedule(18, 0.0, i);
 			if ((8001 <= aleatorio) && (aleatorio <= 10000))
 				curr_clients++;
-			c->server = 3;
+			client[i].server = 3;
 			break;
 
 		/*  centro de serviço = Disk1 */
 		case 6:
 			if (request("Disk1", event, i, 0) == 0)
-				schedule(7, disk_service_time[c->type], i);
+				schedule(7, expntl(disk_service_time[client[i].type]), i);
 			break;
 		case 7:
 			release("Disk1", i);
@@ -173,7 +168,7 @@ int main(int argc, char *argv[]) {
 		/*  centro de serviço = Disk2 */
 		case 10:
 			if (request("Disk2", event, i, 0) == 0)
-				schedule(11, disk_service_time[c->type], i);
+				schedule(11, expntl(disk_service_time[client[i].type]), i);
 			break;
 		case 11:
 			release("Disk2", i);
@@ -183,7 +178,7 @@ int main(int argc, char *argv[]) {
 		/*  centro de serviço = Disk3 */
 		case 14:
 			if (request("Disk3", event, i, 0) == 0)
-				schedule(15, disk_service_time[c->type], i);
+				schedule(15, expntl(disk_service_time[client[i].type]), i);
 			break;
 		case 15:
 			release("Disk3", i);
@@ -193,7 +188,7 @@ int main(int argc, char *argv[]) {
 		/*  centro de serviço = Disk4 */
 		case 18:
 			if (request("Disk4", event, i, 0) == 0)
-				schedule(19, disk_service_time[c->type], i);
+				schedule(19, expntl(disk_service_time[client[i].type]), i);
 			break;
 		case 19:
 			release("Disk4", i);
