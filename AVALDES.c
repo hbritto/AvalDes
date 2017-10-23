@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     double disk_service_time[] = {20, 30};
     double CPU_service_time[] = {10, 15};
 
-    request_t *client = (request_t *)malloc(sizeof(request_t) * max_clients);
+    request_t *client = (request_t *) malloc(sizeof(request_t) * max_clients);
 
     /* escalona a chegada do primeiro cliente */
     int seed = atoi(argv[1]);
@@ -79,9 +79,8 @@ int main(int argc, char *argv[]) {
         /*  centro de serviço = Front */
         case 2:
             if (request("Front", event, i, 0) == 0)
-                schedule(
-                    3, 0.0,
-                    i); // Trocar aqui para considerar tempo de serviço do front
+                // Trocar aqui para considerar tempo de serviço do front
+                schedule(3, 0.0, i); 
             break;
         case 3:
             release("Front", i);
