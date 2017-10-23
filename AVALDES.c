@@ -73,14 +73,14 @@ int main(int argc, char *argv[]) {
             schedule(2, 0.0, i);
 
             if (next_client < max_clients)
-                schedule(1, expntl(arrival_time), next_client++);
+                schedule(1, 0.0, next_client++);
             break;
 
         /*  centro de serviço = Front */
         case 2:
             if (request("Front", event, i, 0) == 0)
                 schedule(
-                    3, 0.0,
+                    3, expntl(arrival_time),
                     i); // Trocar aqui para considerar tempo de serviço do front
             break;
         case 3:
