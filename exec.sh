@@ -1,15 +1,67 @@
-./avaldes 1
-./avaldes 2
-./avaldes 3
-./avaldes 4
-./avaldes 5
-./avaldes 6
-./avaldes 7
-./avaldes 8
-./avaldes 9
-./avaldes 10
-./avaldes 11
-./avaldes 12
-./avaldes 13
-./avaldes 14
-./avaldes 15
+# 1º caso
+./avaldes 1 100 20 30 10 15 10 "default"
+./avaldes 2 100 20 30 10 15 10 "default"
+./avaldes 3 100 20 30 10 15 10 "default"
+./avaldes 4 100 20 30 10 15 10 "default"
+./avaldes 5 100 20 30 10 15 10 "default"
+./avaldes 6 100 20 30 10 15 10 "default"
+./avaldes 7 100 20 30 10 15 10 "default"
+./avaldes 8 100 20 30 10 15 10 "default"
+./avaldes 9 100 20 30 10 15 10 "default"
+./avaldes 10 100 20 30 10 15 10 "default"
+./avaldes 11 100 20 30 10 15 10 "default"
+./avaldes 12 100 20 30 10 15 10 "default"
+./avaldes 13 100 20 30 10 15 10 "default"
+./avaldes 14 100 20 30 10 15 10 "default"
+./avaldes 15 100 20 30 10 15 10 "default"
+
+# 2º caso -> mais carga de trabalho
+./avaldes 1 10000 20 30 10 15 10 "workload"
+./avaldes 2 10000 20 30 10 15 10 "workload"
+./avaldes 3 10000 20 30 10 15 10 "workload"
+./avaldes 4 10000 20 30 10 15 10 "workload"
+./avaldes 5 10000 20 30 10 15 10 "workload"
+./avaldes 6 10000 20 30 10 15 10 "workload"
+./avaldes 7 10000 20 30 10 15 10 "workload"
+./avaldes 8 10000 20 30 10 15 10 "workload"
+./avaldes 9 10000 20 30 10 15 10 "workload"
+./avaldes 10 10000 20 30 10 15 10 "workload"
+./avaldes 11 10000 20 30 10 15 10 "workload"
+./avaldes 12 10000 20 30 10 15 10 "workload"
+./avaldes 13 10000 20 30 10 15 10 "workload"
+./avaldes 14 10000 20 30 10 15 10 "workload"
+./avaldes 15 10000 20 30 10 15 10 "workload"
+
+# 4º caso -> discos mais velozes
+./avaldes 1 100 7 10 10 15 10 "faster_disk"
+./avaldes 2 100 7 10 10 15 10 "faster_disk"
+./avaldes 3 100 7 10 10 15 10 "faster_disk"
+./avaldes 4 100 7 10 10 15 10 "faster_disk"
+./avaldes 5 100 7 10 10 15 10 "faster_disk"
+./avaldes 6 100 7 10 10 15 10 "faster_disk"
+./avaldes 7 100 7 10 10 15 10 "faster_disk"
+./avaldes 8 100 7 10 10 15 10 "faster_disk"
+./avaldes 9 100 7 10 10 15 10 "faster_disk"
+./avaldes 10 100 7 10 10 15 10 "faster_disk"
+./avaldes 11 100 7 10 10 15 10 "faster_disk"
+./avaldes 12 100 7 10 10 15 10 "faster_disk"
+./avaldes 13 100 7 10 10 15 10 "faster_disk"
+./avaldes 14 100 7 10 10 15 10 "faster_disk"
+./avaldes 15 100 7 10 10 15 10 "faster_disk"
+
+# 5º caso -> CPU do front 2x mais veloz
+./avaldes 1 100 20 30 10 15 5 "faster_front"
+./avaldes 2 100 20 30 10 15 5 "faster_front"
+./avaldes 3 100 20 30 10 15 5 "faster_front"
+./avaldes 4 100 20 30 10 15 5 "faster_front"
+./avaldes 5 100 20 30 10 15 5 "faster_front"
+./avaldes 6 100 20 30 10 15 5 "faster_front"
+./avaldes 7 100 20 30 10 15 5 "faster_front"
+./avaldes 8 100 20 30 10 15 5 "faster_front"
+./avaldes 9 100 20 30 10 15 5 "faster_front"
+./avaldes 10 100 20 30 10 15 5 "faster_front"
+./avaldes 11 100 20 30 10 15 5 "faster_front"
+./avaldes 12 100 20 30 10 15 5 "faster_front"
+./avaldes 13 100 20 30 10 15 5 "faster_front"
+./avaldes 14 100 20 30 10 15 5 "faster_front"
+./avaldes 15 100 20 30 10 15 5 "faster_front"

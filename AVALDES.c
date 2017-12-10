@@ -9,6 +9,7 @@ C�digo gerado com o ASDA - Ambiente de Simula��o Distribu�da Autom�tic
 #include "smpl.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 enum reqType { STATIC, DYNAMIC };
 typedef enum reqType req_t;
@@ -21,13 +22,25 @@ typedef struct request_t {
     float ts_end;
 } request_t;
 
+void help() {
+    printf("Usage:\n");
+    printf("./avaldes seed max_clients disk_static_time disk_dynamic_time cpu_static_time cpu_dynamic_time arrival_time use_case\n");
+}
+
+
+
 int main(int argc, char *argv[]) {
+    if(argc <= 8) {
+        help();
+        return 0;
+    }
+
     /* definicoes */
-    unsigned int curr_clients = 0, max_clients = 100;
+    unsigned long curr_clients = 0, max_clients = strtoul(argv[2], NULL, 10); //100
     int event, next_client = 1, aleatorio;
-    double arrival_time = 10;
-    double disk_service_time[] = {20, 30};
-    double CPU_service_time[] = {10, 15};
+    double arrival_time = strtod(argv[7], NULL); //10;
+    double disk_service_time[] = {strtod(argv[3], NULL), strtod(argv[4], NULL)}; //{20, 30};
+    double CPU_service_time[] = {strtod(argv[5], NULL), strtod(argv[6], NULL)}; //{10, 15};
 
     request_t *client = (request_t *) malloc(sizeof(request_t) * max_clients);
 
@@ -37,7 +50,7 @@ int main(int argc, char *argv[]) {
 
     FILE *p, *saida;
     char filename[100];
-    sprintf(filename, "AVALDES_%s.out", argv[1]);
+    sprintf(filename, "AVALDES_%s_%s.out", argv[1], argv[8]);
     saida = fopen(filename, "w");
 
     if ((p = sendto(saida)) == NULL)
