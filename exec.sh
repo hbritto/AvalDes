@@ -16,7 +16,7 @@
 ./avaldes 15 100 20 30 10 15 10 "default"
 
 # 2º caso -> mais carga de trabalho
-./avaldes 1 10000 20 30 10 15 10 "workload"
+./avaldes 1 200 20 30 10 15 5 "workload"
 ./avaldes 2 10000 20 30 10 15 10 "workload"
 ./avaldes 3 10000 20 30 10 15 10 "workload"
 ./avaldes 4 10000 20 30 10 15 10 "workload"
@@ -31,6 +31,23 @@
 ./avaldes 13 10000 20 30 10 15 10 "workload"
 ./avaldes 14 10000 20 30 10 15 10 "workload"
 ./avaldes 15 10000 20 30 10 15 10 "workload"
+
+# 2º caso -> mais carga de trabalho (outra forma)
+./avaldes 1 100 30 45 15 23 15 "workload2"
+./avaldes 2 100 30 45 15 23 15 "workload2"
+./avaldes 3 100 30 45 15 23 15 "workload2"
+./avaldes 4 100 30 45 15 23 15 "workload2"
+./avaldes 5 100 30 45 15 23 15 "workload2"
+./avaldes 6 100 30 45 15 23 15 "workload2"
+./avaldes 7 100 30 45 15 23 15 "workload2"
+./avaldes 8 100 30 45 15 23 15 "workload2"
+./avaldes 9 100 30 45 15 23 15 "workload2"
+./avaldes 10 100 30 45 15 23 15 "workload2"
+./avaldes 11 100 30 45 15 23 15 "workload2"
+./avaldes 12 100 30 45 15 23 15 "workload2"
+./avaldes 13 100 30 45 15 23 15 "workload2"
+./avaldes 14 100 30 45 15 23 15 "workload2"
+./avaldes 15 100 30 45 15 23 15 "workload2"
 
 # 4º caso -> discos mais velozes
 ./avaldes 1 100 7 10 10 15 10 "faster_disk"
