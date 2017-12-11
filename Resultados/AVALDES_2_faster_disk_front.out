@@ -1,0 +1,36 @@
+TempoSimulado: 1549.027243
+Utilizacao ("Front") = 0.293644
+Comprimento medio fila ("Front") = 12.269
+Periodo medio ocupado ("Front") = 4.54863
+
+Utilizacao ("CPU1") = 0.952906
+Comprimento medio fila ("CPU1") = 6.45817
+Periodo medio ocupado ("CPU1") = 12.404
+
+Utilizacao ("Disk1") = 0.438836
+Comprimento medio fila ("Disk1") = 0.235137
+Periodo medio ocupado ("Disk1") = 7.00793
+
+Utilizacao ("CPU2") = 0.724202
+Comprimento medio fila ("CPU2") = 5.14914
+Periodo medio ocupado ("CPU2") = 11.565
+
+Utilizacao ("Disk2") = 0.478624
+Comprimento medio fila ("Disk2") = 0.523082
+Periodo medio ocupado ("Disk2") = 9.75528
+
+Utilizacao ("CPU3") = 0.741871
+Comprimento medio fila ("CPU3") = 5.84237
+Periodo medio ocupado ("CPU3") = 10.9445
+
+Utilizacao ("Disk3") = 0.396762
+Comprimento medio fila ("Disk3") = 0.220848
+Periodo medio ocupado ("Disk3") = 7.68244
+
+Utilizacao ("CPU4") = 0.840856
+Comprimento medio fila ("CPU4") = 5.65908
+Periodo medio ocupado ("CPU4") = 10.3374
+
+Utilizacao ("Disk4") = 0.511977
+Comprimento medio fila ("Disk4") = 0.461517
+Periodo medio ocupado ("Disk4") = 8.43687
